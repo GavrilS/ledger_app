@@ -2,7 +2,7 @@
 This is a model for the income/expenditures for a person in a month.
 """
 
-class FinanceCard:
+class MonthlyFinanceCard:
 
     def __init__(self, year, month):
         self._year = year
