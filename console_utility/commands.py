@@ -22,7 +22,24 @@ class Commands:
 
 
     def add_monthly_income(self):
-        pass
+        data = {}
+        flag = True
+        print('Add monthly income sources in the format "Source": "Value" on separate lines.')
+        print('Example:\nJob: 1800.00\nRent: 1600.00\n')
+        print('To finish adding income data type: done')
+        while flag:
+            try:
+                income = input().split(': ')
+                if income.lower() == 'done':
+                    break
+                income_type = income[0]
+                value = float(income[1])
+            except Exception as e:
+                print('Invalid input. Try again...')
+                continue
+            data[income_type] = value
+        
+        return data
 
     def remove_monthly_income(self):
         pass
