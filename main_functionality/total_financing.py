@@ -2,6 +2,11 @@
 This is a model for the income/expenditures for a person as a total.
 """
 
+ANALYSIS_TYPE_MESSAGE = {
+    'yearly_income': 'Showing the income for year $year_value:',
+    'yearly_expenditure': 'Showing expenditures for year $year_value:'
+}
+
 class TotalFinanceModel:
 
     def __init__(self, user=None, finance_history=None):
@@ -48,6 +53,14 @@ class TotalFinanceModel:
                 return
     
     def get_yearly_income_breakdown(self, year):
+        yearly_data = self._extract_yearly_analysis_data(year, 'income')
+        self._visualize_yearly_finance_data(yearl_data, 'yearly_income', year)
+
+    def get_yearly_expenditures_breakdown(self, year):
+        yearly_data = self._extract_yearly_analysis_data(year, 'expenditures')
+        self._visualize_yearly_finance_data(yearl_data, 'yearly_expenditure', year)
+
+    def _extract_yearly_analysis_data(self, year, analysis_type='income'):
         if not year:
             raise Exception('Provide the year for the yearly analysis!')
 
@@ -55,12 +68,28 @@ class TotalFinanceModel:
         count = 0
         for item in self.finance_history:
             if item.year == year:
-                for k,v in item.income.items():
-                    if not yearly_data.get(k, None):
-                        yearly_data[k] = v
-                    else:
-                        yearl_data.get(k) += v
+                if analysis_type.lower() == 'income':
+                    for k,v in item.income.items():
+                        if not yearly_data.get(k, None):
+                            yearly_data[k] = v
+                        else:
+                            yearl_data.get(k) += v
+                else:
+                    for k,v in item.expenditures.items():
+                        if not yearly_data.get(k, None):
+                            yearly_data[k] = v
+                        else:
+                            yearl_data.get(k) += v
                 count += 1
             
             if count == 12:
                 break
+
+        return yearly_data
+
+    def _visualize_yearly_finance_data(self, yearly_data, analysis_type='yearly_income', year):
+        print(ANALYSIS_TYPE_MESSAGE.get(
+            analysis_type, 'yearly_income').replace('$year_value', str(year)))
+
+        for k, v in yearl_data.items():
+            print(f" {k}: {v}")
