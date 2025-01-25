@@ -46,3 +46,21 @@ class TotalFinanceModel:
                 else:
                     item.show_expenditures()
                 return
+    
+    def get_yearly_income_breakdown(self, year):
+        if not year:
+            raise Exception('Provide the year for the yearly analysis!')
+
+        yearly_data = {}
+        count = 0
+        for item in self.finance_history:
+            if item.year == year:
+                for k,v in item.income.items():
+                    if not yearly_data.get(k, None):
+                        yearly_data[k] = v
+                    else:
+                        yearl_data.get(k) += v
+                count += 1
+            
+            if count == 12:
+                break
