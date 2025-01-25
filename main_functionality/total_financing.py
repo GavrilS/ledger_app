@@ -2,7 +2,7 @@
 This is a model for the income/expenditures for a person as a total.
 """
 
-class TotalFinanceCard:
+class TotalFinanceModel:
 
     def __init__(self, user=None, finance_history=None):
         self._user = user
@@ -28,3 +28,21 @@ class TotalFinanceCard:
             raise Exception('Missing user finances...')
         
         self._finance_history = value
+
+    def get_monthly_income(self, year, month):
+        self._get_monthly_finances_by_type(year, month, 'income')
+
+    def get_monthly_expenditures(self, year, month):
+        self._get_monthly_finances_by_type(year, month, 'expenditure')
+
+    def _get_monthly_finances_by_type(self, year, month, finance_type='income'):
+        if not year or not month:
+            raise Exception('Select both an year and a month to check!')
+        
+        for item in self.finance_history:
+            if item.month == month and item.year == year:
+                if finance_type.lower() == 'income':
+                    item.show_incomes()
+                else:
+                    item.show_expenditures()
+                return
