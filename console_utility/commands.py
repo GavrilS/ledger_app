@@ -22,30 +22,46 @@ class Commands:
 
 
     def add_monthly_income(self):
+        print('Add monthly income sources in the format "Source": "Value" on separate lines.')
+        print('Example:\nJob: 1800.00\nRent: 1600.00')
+        print('To finish adding income data, type: done')
+        
+        return self._handle_user_input()
+
+    def remove_monthly_income(self):
+        print('Remove monthly income sources in the format "Source": "Value" on separate lines.')
+        print('Example:\nJob: 1800.00\nRent: 1600.00')
+        print('To finish removing income data, type: done')
+
+        return self._handle_user_input()
+    
+    def add_monthly_expenditure(self):
+        print('Add monthly expenditure in the format "Source": "Value" on separate lines.')
+        print('Example:\nBills: 300.00\nGroceries: 700.00')
+        print('To finish adding expenditure data, type: done')
+        
+        return self._handle_user_input()
+
+    def remove_monthly_expenditure(self):
+        print('Remove monthly expenditure in the format "Source": "Value" on separate lines.')
+        print('Example:\nBills: 300.00\nGroceries: 700.00')
+        print('To finish removing expenditure data, type: done')
+        
+        return self._handle_user_input()
+
+    def _handle_user_input(self):
         data = {}
         flag = True
-        print('Add monthly income sources in the format "Source": "Value" on separate lines.')
-        print('Example:\nJob: 1800.00\nRent: 1600.00\n')
-        print('To finish adding income data type: done')
         while flag:
             try:
-                income = input().split(': ')
-                if income.lower() == 'done':
+                user_input = input().split(': ')
+                if user_input.lower() == 'done':
                     break
-                income_type = income[0]
-                value = float(income[1])
+                user_input_type = user_input[0]
+                value = float(user_input[1])
             except Exception as e:
                 print('Invalid input. Try again...')
                 continue
-            data[income_type] = value
+            data[user_input_type] = value
         
         return data
-
-    def remove_monthly_income(self):
-        pass
-    
-    def add_monthly_expenditure(self):
-        pass
-
-    def remove_monthly_expenditure(self):
-        pass
