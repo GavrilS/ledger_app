@@ -2,12 +2,12 @@
 Commands to get finance data for analysis from users in the console.
 """
 
-class Commands:
+class FinanceCommands:
 
     def __init__(self):
         pass
 
-    def build_monthly_finance_model(self):
+    def build_monthly_finance_report(self):
         year = int(input('Provide a year for the report card: '))
         month = input('Provide a month for the report card: ')
         income = add_monthly_income()
