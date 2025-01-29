@@ -7,11 +7,11 @@ ANALYSIS_TYPE_MESSAGE = {
     'yearly_expenditure': 'Showing expenditures for year $year_value:'
 }
 
-class TotalFinanceModel:
+class Ledger:
 
-    def __init__(self, user=None, finance_history=None):
+    def __init__(self, user=None):
         self._user = user
-        self._finance_history = finance_history
+        self._finance_history = []
 
     @property
     def user(self):
@@ -30,9 +30,9 @@ class TotalFinanceModel:
     @finances.setter
     def finances(self, value):
         if not value:
-            raise Exception('Missing user finances...')
+            raise Exception('Missing monthly report...')
         
-        self._finance_history = value
+        self._finance_history.add(value)
 
     def get_monthly_income(self, year, month):
         self._get_monthly_finances_by_type(year, month, 'income')
