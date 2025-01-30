@@ -7,6 +7,14 @@ class FinanceCommands:
     def __init__(self):
         pass
 
+    def build_user_ledger(self, users=[]):
+        user_mail = input('Enter the user email for the ledger owner: ')
+        for user in users:
+            if user.email == user_mail:
+                return user
+            
+        raise Exception('No such user was found! Try again...')
+
     def build_monthly_finance_report(self):
         year = int(input('Provide a year for the report card: '))
         month = input('Provide a month for the report card: ')

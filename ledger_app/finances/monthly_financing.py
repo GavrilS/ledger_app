@@ -2,7 +2,7 @@
 This is a report for the income/expenditures for a person in a month.
 """
 
-class MonthlyReeport:
+class MonthlyReport:
 
     def __init__(self, year, month):
         self._year = year
