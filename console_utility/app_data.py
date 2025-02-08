@@ -1,6 +1,7 @@
 """
 This model holds the temp in-memory data for the command utility tool.
 """
+import ledger_app.finances.ledger as ledger
 
 class AppData:
 
@@ -46,3 +47,16 @@ class AppData:
     def list_user_mails(self):
         for user in self.users:
             print(user.email)
+
+    def verify_active_user_ledger(self):
+        if not self.ledgers.get(self.active_user, None):
+            user_ledger = ledger.Ledger(self.active_user)
+            app_data.add_user_ledger(self.active_user, user_ledger)
+
+    def verify_active_user(self):
+        if not self.active_user:
+            print('List of active users: ')
+            self.get_user_mails()
+            get_user_mail = income('There is no active user currently. Provide an existing user email to make it active: ')
+            user = self.get_user_by_mail(get_user_mail)
+            self.set_active_user(user)
