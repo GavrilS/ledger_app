@@ -40,13 +40,13 @@ class MonthlyReport:
         if not self.income.get(source, None):
             self.income[source] = value
         else:
-            self.income.get(source) += value
+            self.income[source] += value
 
     def remove_income(self, source, value):
         if self.income.get(source, None):
-            self.income.get(source) -= value
+            self.income[source] -= value
             if self.income.get(source) <= 0:
-                del self.income.get(source)
+                del self.income[source]
 
     def show_incomes(self):
         print(f"Income for {self.month} {self.year}")
@@ -61,13 +61,13 @@ class MonthlyReport:
         if not self.expenditures.get(source, None):
             self.expenditures[source] = value
         else:
-            self.expenditures.get(source) += value
+            self.expenditures[source] += value
     
     def remove_expenditure(self, source, value):
         if self.expenditures.get(source, None):
-            self.expenditures.get(source) -= value
+            self.expenditures[source] -= value
             if self.expenditures.get(source) <= 0:
-                del self.expenditures.get(source)
+                del self.expenditures[source]
     
     def show_expenditures(self):
         print(f"Expenditures for {self.month} {self.year}")

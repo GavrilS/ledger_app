@@ -54,11 +54,11 @@ class Ledger:
     
     def get_yearly_income_breakdown(self, year):
         yearly_data = self._extract_yearly_analysis_data(year, 'income')
-        self._visualize_yearly_finance_data(yearl_data, 'yearly_income', year)
+        self._visualize_yearly_finance_data(yearl_data, year, 'yearly_income')
 
     def get_yearly_expenditures_breakdown(self, year):
         yearly_data = self._extract_yearly_analysis_data(year, 'expenditures')
-        self._visualize_yearly_finance_data(yearl_data, 'yearly_expenditure', year)
+        self._visualize_yearly_finance_data(yearl_data, year, 'yearly_expenditure')
 
     def _extract_yearly_analysis_data(self, year, analysis_type='income'):
         if not year:
@@ -73,13 +73,13 @@ class Ledger:
                         if not yearly_data.get(k, None):
                             yearly_data[k] = v
                         else:
-                            yearl_data.get(k) += v
+                            yearly_data[k] += v
                 else:
                     for k,v in item.expenditures.items():
                         if not yearly_data.get(k, None):
                             yearly_data[k] = v
                         else:
-                            yearl_data.get(k) += v
+                            yearly_data[k] += v
                 count += 1
             
             if count == 12:
@@ -87,7 +87,7 @@ class Ledger:
 
         return yearly_data
 
-    def _visualize_yearly_finance_data(self, yearly_data, analysis_type='yearly_income', year):
+    def _visualize_yearly_finance_data(self, yearly_data, year, analysis_type='yearly_income'):
         print(ANALYSIS_TYPE_MESSAGE.get(
             analysis_type, 'yearly_income').replace('$year_value', str(year)))
 
