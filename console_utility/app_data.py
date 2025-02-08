@@ -42,3 +42,7 @@ class AppData:
         
         print('The user was not found!')
         return None
+    
+    def list_user_mails(self):
+        for user in self.users:
+            print(user.email)

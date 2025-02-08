@@ -9,7 +9,7 @@ def build_user_ledger(self, app_data):
     for user in app_data.users:
         if user.email == user_mail:
             user_ledger = ledger.Ledger(user)
-            app_data.ledgers[user.email] = user_ledger
+            app_data.add_user_ledger(user, user_ledger)
             return
         
     raise Exception('No such user was found! Try again...')
@@ -26,38 +26,48 @@ def build_monthly_finance_report(self, app_data):
     for k, v in expenditures.items():
         data.add_expenditure(source=k, value=v)
     
-    # if app_data.
+    if not app_data.active_user:
+        print('List of active users: ')
+        app_data.get_user_mails()
+        get_user_mail = income('There is no active user currently. Provide an existing user email to make it active: ')
+        user = app_data.get_user_by_mail(get_user_mail)
+        app_data.set_active_user(user)
+        if not app_data.ledgers.get(app_data.active_user, None):
+            user_ledger = ledger.Ledger(user)
+            app_data.add_user_ledger(user, user_ledger)
+    
+    app_data.ledgers[app_data.active_user].finances = data
 
 
-def add_monthly_income(self):
+def add_monthly_income(self, app_data):
     print('Add monthly income sources in the format "Source": "Value" on separate lines.')
     print('Example:\nJob: 1800.00\nRent: 1600.00')
     print('To finish adding income data, type: done')
     
-    return self._handle_user_input()
+    return self._handle_user_input(app_data)
 
-def remove_monthly_income(self):
+def remove_monthly_income(self, app_data):
     print('Remove monthly income sources in the format "Source": "Value" on separate lines.')
     print('Example:\nJob: 1800.00\nRent: 1600.00')
     print('To finish removing income data, type: done')
 
-    return self._handle_user_input()
+    return self._handle_user_input(app_data)
 
-def add_monthly_expenditure(self):
+def add_monthly_expenditure(self, app_data):
     print('Add monthly expenditure in the format "Source": "Value" on separate lines.')
     print('Example:\nBills: 300.00\nGroceries: 700.00')
     print('To finish adding expenditure data, type: done')
     
-    return self._handle_user_input()
+    return self._handle_user_input(app_data)
 
-def remove_monthly_expenditure(self):
+def remove_monthly_expenditure(self, app_data):
     print('Remove monthly expenditure in the format "Source": "Value" on separate lines.')
     print('Example:\nBills: 300.00\nGroceries: 700.00')
     print('To finish removing expenditure data, type: done')
     
-    return self._handle_user_input()
+    return self._handle_user_input(app_data)
 
-def _handle_user_input(self):
+def _handle_user_input(self, app_data):
     data = {}
     flag = True
     while flag:
