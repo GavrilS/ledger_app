@@ -1,4 +1,4 @@
-MODELS:
+# BASIC MODELS:
 
 Ledger model:
 - user
@@ -55,3 +55,31 @@ Commands constant data:
 ** AVAILABLE_COMMANDS = dict(command: help value)
 ** MONTH_DATA = dict(user_input: full month name)
 * verify_year_input(year) - > make sure the user is providing valid year data
+
+
+# RELATIONSHIPS:
+
+1. Basic models:
+Ledger <-> User: 1 to 1 relationship
+
+Ledger <<<-> MonthlyReports: 1 to many - 1 ledger can have multiple monthly reports, but 1 monthly report can have only one ledger
+
+2. Command models:
+AppData <<<-> user: 1 app data to many users
+AppData <<<-> ledger: 1 app data to many ledgers
+FisCommands <-> AppData: 1 to 1 relationship
+UserCommands <-> AppData: 1 to 1 relationship
+
+
+# Functionality:
+1. Engine - the runner starts the console application and keeps on waiting for commands until the user terminates the utility; at the beginning it creates the 'AppData' object that will hold the temp data generated during execution
+
+2. Commands:
+(a) User commands:
+    - create user - gets input from the user to create a new user and adds it to the AppData; if this is the first user set it as the active user in the AppData model #ToDo
+
+(b) Finance commands:
+    - build user ledger - need to modify this to create a user for the currently active user if non exists #ToDo
+    - build monthly finance report - should work as explained above; no more updates needed
+    - add/remove monthly income - should be updated to take month/year as user input and modify the monthly reports for the active user as specified by the user input #ToDo
+    - add/remove montly expenditures - should be updated to take month/year as user input and modify the montly reports for the active user as specified by the user input #ToDo
