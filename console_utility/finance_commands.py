@@ -20,21 +20,25 @@ class FinCommands:
         raise Exception('No such user was found! Try again...')
 
     def build_monthly_finance_report(self):
-        year = int(input('Provide a year for the report card: '))
-        month = input('Provide a month for the report card: ')
-        income = add_monthly_income()
-        expenditures = add_monthly_expenditure()
+        try:
+            self.app_data.verify_active_user_ledger()
 
-        data = mf.MonthlyReport(year=year, month=month)
-        for k, v in income.items():
-            data.add_income(source=k, value=v)
-        for k, v in expenditures.items():
-            data.add_expenditure(source=k, value=v)
-        
-        self.app_data.verify_active_user()
-        self.app_data.verify_active_user_ledger()
-        
-        self.app_data.ledgers[app_data.active_user].finances = data
+            year = int(input('Provide a year for the report card: '))
+            month = input('Provide a month for the report card: ')
+            income = add_monthly_income()
+            expenditures = add_monthly_expenditure()
+
+            data = mf.MonthlyReport(year=year, month=month)
+            for k, v in income.items():
+                data.add_income(source=k, value=v)
+            for k, v in expenditures.items():
+                data.add_expenditure(source=k, value=v)
+            
+            self.app_data.ledgers[app_data.active_user].finances = data
+        except Exception as e:
+            retry = input('There was an issue building the monthly finance report... Do you want to try again[Yes/no]: ')
+            if retry.lower() == 'yes':
+                self.build_monthly_finance_report()
 
 
     def add_monthly_income(self):

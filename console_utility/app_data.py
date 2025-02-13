@@ -49,6 +49,7 @@ class AppData:
             print(user.email)
 
     def verify_active_user_ledger(self):
+        self.verify_active_user()
         if not self.ledgers.get(self.active_user, None):
             user_ledger = ledger.Ledger(self.active_user)
             app_data.add_user_ledger(self.active_user, user_ledger)
