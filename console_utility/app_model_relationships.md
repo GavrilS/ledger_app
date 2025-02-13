@@ -44,10 +44,10 @@ AppData model:
 FinCommands model:
 * build_user_ledger() - > asks for user_email as input and builds a ledger for the user if not exists # Done
 * build_monthly_finance_report() - > asks for year, month, incomes and expenditures and adds it to the active user if exists; can retry on error # Done
-* add_monthly_income() - > takes user input data in the format source: value until stopped then returns it; might be better to rework it to take month/year and write to the app data directly
-* remove_monthly_income() - > takes user input data in the format source: value until stopped then returns it; might be better to rework it to take month/year and write to the app data directly
-* add_monthly_expenditure() - > takes user input data in the format source: value until stopped then returns it; might be better to rework it to take month/year and write to the app data directly
-* remove_monthly_expenditure() - > takes user input data in the format source: value until stopped then returns it; might be better to rework it to take month/year and write to the app data directly
+* add_monthly_income() - > takes user input data in the format source: value until stopped and updates the app_data in place # Done
+* remove_monthly_income() - > takes user input data in the format source: value until stopped and updates the app_data in place # Done
+* add_monthly_expenditure() - > takes user input data in the format source: value until stopped and updates the app_data in place # Done
+* remove_monthly_expenditure() - > takes user input data in the format source: value until stopped and updates the app_data in place # Done
 
 UserCommands model:
 - create_user() - > running the command will ask the user for the relevant user data
