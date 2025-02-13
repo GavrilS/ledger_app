@@ -28,6 +28,13 @@ class AppData:
         self.ledgers[user.email] = ledger
         print('New ledger added to user ', user_mail)
 
+    def get_user_monthly_report(self, year, month):
+        self.verify_active_user_ledger()
+        ledger = self.ledgers[self.active_user]
+        for report in ledger.finances:
+            if report.year == year and report.month == month:
+                return report
+
     def remove_user(self, user):
         if user in self.users:
             self.users.remove(user)
