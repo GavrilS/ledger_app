@@ -19,6 +19,12 @@ class AppData:
 
     def add_user(self, user):
         self.users.append(user)
+
+    def remove_user(self, user_email):
+        for user in self.users:
+            if user.email == user_email:
+                self.users.remove(user)
+                return
     
     def add_user_ledger(self, user, ledger):
         if self.ledgers.get(user.email, None):
