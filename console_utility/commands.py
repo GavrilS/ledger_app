@@ -3,7 +3,24 @@ This file provides a list of available commands in the format of a dictionary wh
 is a command and its value is the explanation of the command.
 """
 
-AVAILABLE_COMMANDS = {}
+AVAILABLE_COMMANDS = {
+    'create': {
+        'user': 'Create a new user for the application',
+        'ledger': 'Create a new ledger for the user',
+        'report': 'Create a monthly report for the user'
+    },
+    'delete': {
+        'user': 'Deletes a user based on an email'
+    },
+    'add': {
+        'income': 'Adds income source/value for a specific monthly report card; the monthly report needs to exist already',
+        'expences': 'Adds expence source/value for a specific monthly report card, the monthly report needs to exist already'
+    },
+    'remove': {
+        'income': 'Remove already existing income source/value for a specific monthly report card; the card needs to exist already',
+        'expcences': 'Remove already existing expence source/value for a specific monthly report card; the card needs to exist already'
+    }
+}
 
 MONTHS = {
     '1': 'January',
@@ -62,3 +79,28 @@ MONTHS = {
     'december': 'December',
     'dec': 'December',
 }
+
+def command_parser(command=None):
+    if not command or 'help' in command.lower():
+        print('Available commands:')
+        for option in AVAILABLE_COMMANDS.keys():
+            print('Option: ', option)
+            for cmd, description in AVAILABLE_COMMANDS[option].items():
+                print(f"  {cmd}: {description}")
+        print('='*80, '\n')
+        return
+
+    cmd_components = command.split(' ')
+    if len(cmd_components) < 2 or not AVAILABLE_COMMANDS.get(cmd_components[0], None) or \n
+        not AVAILABLE_COMMANDS[cmd_components[0]].get(cmd_components[1], None):
+        command_help()
+    
+    else:
+        return f"{cmd_components[0]} {cmd_components[1]}"
+
+def get_standard_month(month=None):
+    if not MONTHS.get(month, None):
+        month_formats = ' \njanuary\njan\n01\n1\n'
+        raise Exception(f"Invalid month format provided. Months should be in one of these formats: {month_formats}")
+    
+    return MONTHS.get(month)
