@@ -80,7 +80,6 @@ class FinCommands:
                         break
                     user_input_type = user_input[0]
                     value = float(user_input[1])
-                    # ToDo add/remove input/expenditure from report card
                     if operation == 'add_income':
                         monthly_report.add_income(source=user_input_type, value=value)
                     elif operation == 'remove_income':
