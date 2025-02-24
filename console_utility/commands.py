@@ -45,7 +45,7 @@ MONTHS = {
     #-----------
     '5': 'May',
     '05': 'May',
-    'may': 'May'
+    'may': 'May',
     #-----------
     '6': 'June',
     '06': 'June',
@@ -91,7 +91,7 @@ def command_parser(command=None):
         return
 
     cmd_components = command.split(' ')
-    if len(cmd_components) < 2 or not AVAILABLE_COMMANDS.get(cmd_components[0], None) or \n
+    if len(cmd_components) < 2 or not AVAILABLE_COMMANDS.get(cmd_components[0], None) or \
         not AVAILABLE_COMMANDS[cmd_components[0]].get(cmd_components[1], None):
         command_help()
     
