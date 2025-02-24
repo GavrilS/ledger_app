@@ -51,6 +51,7 @@ FinCommands model:
 
 UserCommands model:
 - create_user() - > running the command will ask the user for the relevant user data
+- delete_user() -> removes a user based on specified user email
 
 Commands constant data:
 ** AVAILABLE_COMMANDS = dict(command: help value)

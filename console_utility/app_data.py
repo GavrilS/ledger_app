@@ -45,14 +45,6 @@ class AppData:
             if report.year == year and report.month == month:
                 return report
 
-    def remove_user(self, user):
-        if user in self.users:
-            self.users.remove(user)
-            print('User removed: ', user)
-            return
-
-        print('User was not found!')
-
     def get_user_by_mail(self, user_mail):
         for user in self.users:
             if user.email == user_mail:
