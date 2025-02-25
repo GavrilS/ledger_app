@@ -13,8 +13,8 @@ class UserCommands:
         user_name = input('Enter the name of the user: ')
         email = input('Enter the email of the user: ')
         password = input('Enter the user password: ')
-        app_data.add_user(user.User(user_name, email, password))
+        self.app_data.add_user(user.User(user_name, email, password))
 
     def delete_user(self):
         email = input('Enter the email of the user to be deleted: ')
-        app_data.remove_user(email)
+        self.app_data.remove_user(email)
