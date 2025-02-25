@@ -28,6 +28,10 @@ class Engine:
             cmd = self._get_user_input()
             final_command = cmds.command_parser(cmd)
             if final_command:
+                # try:
+                #     self._run_command(final_command)
+                # except Exception as e:
+                #     print(f"Command failed: {e}")
                 self._run_command(final_command)
 
     def _run_command(self, cmd):
@@ -49,7 +53,7 @@ class Engine:
             self.finance.remove_monthly_expenditure()
 
     def _get_user_input(self):
-        user_input = input('Enter your command: ')
+        user_input = input('\nEnter your command: ')
         if user_input.lower() in EXIT_CMDS:
             sys.exit()
         return user_input
