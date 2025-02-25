@@ -34,6 +34,7 @@ class FinCommands:
                 data.add_expenditure(source=k, value=v)
             
             self.app_data.ledgers[app_data.active_user].finances = data
+            print('Monthly report added!')
         except Exception as e:
             retry = input('There was an issue building the monthly finance report... Do you want to try again[Yes/no]: ')
             if retry.lower() == 'yes':
@@ -44,28 +45,28 @@ class FinCommands:
         print('Example:\nJob: 1800.00\nRent: 1600.00')
         print('To finish adding income data, type: done')
         
-        return self._handle_user_input('add_income')
+        self._handle_user_input('add_income')
 
     def remove_monthly_income(self):
         print('Remove monthly income sources in the format "Source": "Value" on separate lines.')
         print('Example:\nJob: 1800.00\nRent: 1600.00')
         print('To finish removing income data, type: done')
 
-        return self._handle_user_input('remove_income')
+        self._handle_user_input('remove_income')
 
     def add_monthly_expenditure(self):
         print('Add monthly expenditure in the format "Source": "Value" on separate lines.')
         print('Example:\nBills: 300.00\nGroceries: 700.00')
         print('To finish adding expenditure data, type: done')
         
-        return self._handle_user_input('add_expenditure')
+        self._handle_user_input('add_expenditure')
 
     def remove_monthly_expenditure(self):
         print('Remove monthly expenditure in the format "Source": "Value" on separate lines.')
         print('Example:\nBills: 300.00\nGroceries: 700.00')
         print('To finish removing expenditure data, type: done')
         
-        return self._handle_user_input('remove_expenditure')
+        self._handle_user_input('remove_expenditure')
 
     def _handle_user_input(self, operation):
         try:
