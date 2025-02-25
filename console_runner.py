@@ -19,11 +19,34 @@ class Engine:
 
     def __init__(self):
         self.app = AppData()
+        self.finance = FinCommands(self.app)
+        self.user = UserCommands(self.app)
 
     def run(self):
         self._greeting()
         while True:
             cmd = self._get_user_input()
+            final_command = cmds.command_parser(cmd)
+            if final_command:
+                self._run_command(final_command)
+
+    def _run_command(self, cmd):
+        if 'create user' in cmd:
+            self.user.create_user()
+        elif 'create ledger' in cmd:
+            self.finance.build_user_ledger()
+        elif 'create report' in cmd:
+            self.finance.build_monthly_finance_report()
+        elif 'delete user' in cmd:
+            self.user.delete_user()
+        elif 'add income' in cmd:
+            self.finance.add_monthly_income()
+        elif 'add expences' in cmd:
+            self.finance.add_monthly_expenditure()
+        elif 'remove income' in cmd:
+            self.finance.remove_monthly_income()
+        elif 'remove expences' in cmd:
+            self.finance.remove_monthly_expenditure()
 
     def _get_user_input(self):
         user_input = input('Enter your command: ')
