@@ -88,12 +88,12 @@ def command_parser(command=None):
             for cmd, description in AVAILABLE_COMMANDS[option].items():
                 print(f"  {cmd}: {description}")
         print('='*80, '\n')
-        return
+        return None
 
     cmd_components = command.split(' ')
     if len(cmd_components) < 2 or not AVAILABLE_COMMANDS.get(cmd_components[0], None) or \
         not AVAILABLE_COMMANDS[cmd_components[0]].get(cmd_components[1], None):
-        command_help()
+        command_parser()
     
     else:
         return f"{cmd_components[0]} {cmd_components[1]}"
