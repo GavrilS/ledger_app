@@ -21,7 +21,8 @@ class FinCommands:
 
     def build_monthly_finance_report(self):
         try:
-            self.app_data.verify_active_user_ledger()
+            if not self.app_data.verify_active_user_ledger():
+                return False
 
             year, month = self._get_report_period()
             income = add_monthly_income()
