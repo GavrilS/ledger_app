@@ -36,7 +36,7 @@ class FinCommands:
             self.app_data.ledgers[app_data.active_user].finances = data
             print('Monthly report added!')
         except Exception as e:
-            retry = input('There was an issue building the monthly finance report... Do you want to try again[Yes/no]: ')
+            retry = input(f"There was an issue building the monthly finance report: {e} \nDo you want to try again?[Yes/no]: ")
             if retry.lower() == 'yes':
                 self.build_monthly_finance_report()
 

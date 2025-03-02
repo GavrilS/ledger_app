@@ -54,6 +54,7 @@ class AppData:
         return None
     
     def list_user_mails(self):
+        print('List of active users: ')
         for user in self.users:
             print(user.email)
 
@@ -64,9 +65,14 @@ class AppData:
             app_data.add_user_ledger(self.active_user, user_ledger)
 
     def verify_active_user(self):
-        if not self.active_user:
-            print('List of active users: ')
-            self.get_user_mails()
-            get_user_mail = income('There is no active user currently. Provide an existing user email to make it active: ')
-            user = self.get_user_by_mail(get_user_mail)
-            self.set_active_user(user)
+        try:
+            if not self.active_user:
+                self.list_user_mails()
+                get_user_mail = income('There is no active user currently. Provide an existing user email to make it active: ')
+                user = self.get_user_by_mail(get_user_mail)
+                self.set_active_user(user)
+            
+            return True
+        except Exception as e:
+            print(f"Issue verifying active user: {e}")
+            return False
