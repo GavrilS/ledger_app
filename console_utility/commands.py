@@ -14,11 +14,11 @@ AVAILABLE_COMMANDS = {
     },
     'add': {
         'income': 'Adds income source/value for a specific monthly report card; the monthly report needs to exist already',
-        'expences': 'Adds expence source/value for a specific monthly report card, the monthly report needs to exist already'
+        'expenses': 'Adds expense source/value for a specific monthly report card, the monthly report needs to exist already'
     },
     'remove': {
         'income': 'Remove already existing income source/value for a specific monthly report card; the card needs to exist already',
-        'expcences': 'Remove already existing expence source/value for a specific monthly report card; the card needs to exist already'
+        'expenses': 'Remove already existing expense source/value for a specific monthly report card; the card needs to exist already'
     }
 }
 

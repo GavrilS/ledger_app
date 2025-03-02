@@ -45,11 +45,11 @@ class Engine:
             self.user.delete_user()
         elif 'add income' in cmd:
             self.finance.add_monthly_income()
-        elif 'add expences' in cmd:
+        elif 'add expenses' in cmd:
             self.finance.add_monthly_expenditure()
         elif 'remove income' in cmd:
             self.finance.remove_monthly_income()
-        elif 'remove expences' in cmd:
+        elif 'remove expenses' in cmd:
             self.finance.remove_monthly_expenditure()
 
     def _get_user_input(self):
