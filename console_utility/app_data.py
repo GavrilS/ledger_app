@@ -62,13 +62,13 @@ class AppData:
         self.verify_active_user()
         if not self.ledgers.get(self.active_user, None):
             user_ledger = ledger.Ledger(self.active_user)
-            app_data.add_user_ledger(self.active_user, user_ledger)
+            self.app_data.add_user_ledger(self.active_user, user_ledger)
 
     def verify_active_user(self):
         try:
             if not self.active_user:
                 self.list_user_mails()
-                get_user_mail = income('There is no active user currently. Provide an existing user email to make it active: ')
+                get_user_mail = input('There is no active user currently. Provide an existing user email to make it active: ')
                 user = self.get_user_by_mail(get_user_mail)
                 self.set_active_user(user)
             
