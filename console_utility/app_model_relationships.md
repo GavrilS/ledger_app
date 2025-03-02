@@ -83,5 +83,19 @@ UserCommands <-> AppData: 1 to 1 relationship
 (b) Finance commands:
     - build user ledger - need to modify this to create a user for the currently active user if non exists #ToDo
     - build monthly finance report - should work as explained above; no more updates needed
-    - add/remove monthly income - should be updated to take month/year as user input and modify the monthly reports for the active user as specified by the user input #ToDo
-    - add/remove montly expenditures - should be updated to take month/year as user input and modify the montly reports for the active user as specified by the user input #ToDo
+    - add/remove monthly income - should be updated to take month/year as user input and modify the monthly reports for the active user as specified by the user input #Done
+    - add/remove montly expenditures - should be updated to take month/year as user input and modify the montly reports for the active user as specified by the user input #Done
+
+# Testing:
+(a) Create commands:
+    - create user
+    - create ledger
+    - create report
+(b) Delete commands:
+    - delete user
+(c) Add commands:
+    - add income
+    - add expenses
+(d) Remove commands:
+    - remove income
+    - remove expenses
