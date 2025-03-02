@@ -28,11 +28,10 @@ class Engine:
             cmd = self._get_user_input()
             final_command = cmds.command_parser(cmd)
             if final_command:
-                # try:
-                #     self._run_command(final_command)
-                # except Exception as e:
-                #     print(f"Command failed: {e}")
-                self._run_command(final_command)
+                try:
+                    self._run_command(final_command)
+                except Exception as e:
+                    print(f"Command failed: {e}")
 
     def _run_command(self, cmd):
         if 'create user' in cmd:
