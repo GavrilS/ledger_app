@@ -39,6 +39,8 @@ class User:
     def email(self, email):
         if not email:
             raise Exception('Email cannot be empty...')
+        
+        self._email = email
 
     def __str__(self):
         return f"User: name -> {self.name}; email -> {self.email}"
