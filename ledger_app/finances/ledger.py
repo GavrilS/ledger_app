@@ -10,7 +10,7 @@ ANALYSIS_TYPE_MESSAGE = {
 class Ledger:
 
     def __init__(self, user=None):
-        self._user = user
+        self.user = user
         self._finance_history = []
 
     @property

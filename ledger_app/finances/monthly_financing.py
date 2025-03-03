@@ -5,8 +5,8 @@ This is a report for the income/expenditures for a person in a month.
 class MonthlyReport:
 
     def __init__(self, year, month):
-        self._year = year
-        self._month = month
+        self.year = year
+        self.month = month
         self._income_sources = {}
         self._expenditures = {}
 
