@@ -5,9 +5,9 @@ A class to create/delete new Users.
 class User:
 
     def __init__(self, name, password, email):
-        self._name = name
-        self._password = password
-        self._email = email
+        self.name = name
+        self.password = password
+        self.email = email
 
     @property
     def name(self):
@@ -39,11 +39,6 @@ class User:
     def email(self, email):
         if not email:
             raise Exception('Email cannot be empty...')
-        
-        if not self._email:
-            self._email = email
-        else:
-            raise Exception('An existing user cannot change their email!')
 
     def __str__(self):
         return f"User: name -> {self.name}; email -> {self.email}"
