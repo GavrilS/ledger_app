@@ -19,6 +19,9 @@ AVAILABLE_COMMANDS = {
     'remove': {
         'income': 'Remove already existing income source/value for a specific monthly report card; the card needs to exist already',
         'expenses': 'Remove already existing expense source/value for a specific monthly report card; the card needs to exist already'
+    },
+    'show': {
+        'users': 'Show a list of existing users'
     }
 }
 
