@@ -44,3 +44,6 @@ class User:
             self._email = email
         else:
             raise Exception('An existing user cannot change their email!')
+
+    def __str__(self):
+        return f"User: name -> {self.name}; email -> {self.email}"

@@ -36,7 +36,7 @@ class AppData:
             if confirmation != 'Yes':
                 return
         self.ledgers[user.email] = ledger
-        print('New ledger added to user ', user_mail)
+        print('New ledger added to user ', user.email)
 
     def get_user_monthly_report(self, year, month):
         self.verify_active_user_ledger()
@@ -56,7 +56,7 @@ class AppData:
     def list_user_mails(self):
         print('List of active users: ')
         for user in self.users:
-            print(user.email)
+            print(user)
 
     def verify_active_user_ledger(self):
         if self.verify_active_user():

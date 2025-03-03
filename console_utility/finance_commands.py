@@ -25,12 +25,14 @@ class FinCommands:
                 return False
 
             year, month = self._get_report_period()
-            income = add_monthly_income()
-            expenditures = add_monthly_expenditure()
-
+            income = self.add_monthly_income()
+            expenditures = self.add_monthly_expenditure()
+            
             data = mf.MonthlyReport(year=year, month=month)
+            
             for k, v in income.items():
                 data.add_income(source=k, value=v)
+            
             for k, v in expenditures.items():
                 data.add_expenditure(source=k, value=v)
             
