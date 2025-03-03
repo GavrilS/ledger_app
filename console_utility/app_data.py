@@ -10,12 +10,21 @@ class AppData:
         self.ledgers = {}
         self.active_user = None
 
+    def change_active_user(self):
+        self.list_user_mails()
+        user_mail = input('Provide user email for the new active user: ')
+        user = self.get_user_by_mail(user_mail)
+        self.set_active_user(user)
+
     def set_active_user(self, user):
         if not user in self.users:
             print('User is not present in the list of saved users... Execute command Add User first...')
             return
         
         self.active_user = user
+    
+    def show_active_user(self):
+        print(f"The current active user is: {self.active_user}")
 
     def add_user(self, user):
         self.users.append(user)

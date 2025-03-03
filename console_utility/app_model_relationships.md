@@ -105,4 +105,4 @@ UserCommands <-> AppData: 1 to 1 relationship
     - show users    -> Done
     - show active user
 (f) Change commands:
-    - change active user
+    - change user -> Done

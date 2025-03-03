@@ -21,7 +21,11 @@ AVAILABLE_COMMANDS = {
         'expenses': 'Remove already existing expense source/value for a specific monthly report card; the card needs to exist already'
     },
     'show': {
-        'users': 'Show a list of existing users'
+        'users': 'Show a list of existing users',
+        'active user': 'Shows the currently active user in the application'
+    },
+    'change': {
+        'user': 'Changes the active user'
     }
 }
 

@@ -52,6 +52,10 @@ class Engine:
             self.finance.remove_monthly_expenditure()
         elif 'show users' in cmd:
             self.user.show_users()
+        elif 'show active user' in cmd:
+            self.user.show_active_user()
+        elif 'change user' in cmd:
+            self.user.change_user()
 
     def _get_user_input(self):
         user_input = input('\nEnter your command: ')

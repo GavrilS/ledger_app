@@ -24,3 +24,16 @@ class UserCommands:
 
     def show_users(self):
         self.app_data.list_user_mails()
+
+    def change_user(self):
+        try:
+            self.app_data.change_active_user()
+            print('The active user was changed!')
+        except Exception as e:
+            print(f"The user couldn't be switched: \n{e}")
+    
+    def show_active_user(self):
+        try:
+            self.app_data.show_active_user()
+        except Exception as e:
+            print(f"Couldn't show the active user: \n{e}")
