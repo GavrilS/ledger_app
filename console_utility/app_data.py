@@ -50,7 +50,7 @@ class AppData:
 
     def show_user_ledger(self):
         self.verify_active_user()
-        print('User ledger: ', self.ledgers[self.active_user.email])
+        print(self.ledgers[self.active_user.email])
 
     def get_user_monthly_report(self, year, month):
         self.verify_active_user_ledger()

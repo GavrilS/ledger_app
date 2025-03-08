@@ -95,4 +95,4 @@ class Ledger:
             print(f" {k}: {v}")
 
     def __str__(self):
-        print(f"User - {self.user}\nFinance reports - {self.finances}")
+        return f"{self.user}\nFinance reports - {self.finances}"

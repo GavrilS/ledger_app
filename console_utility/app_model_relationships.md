@@ -89,7 +89,7 @@ UserCommands <-> AppData: 1 to 1 relationship
 # Testing:
 (a) Create commands:
     - create user -> Done
-    - create ledger
+    - create ledger -> Done(might have to update it to list active user or only work if active user is set)
     - create report
 (b) Delete commands:
     - delete user
@@ -103,7 +103,7 @@ UserCommands <-> AppData: 1 to 1 relationship
     - show monthly report
     - show yearly report
     - show users    -> Done
-    - show active user
-    - show user ledger
+    - show active user -> Done
+    - show user ledger -> Done
 (f) Change commands:
     - change user -> Done

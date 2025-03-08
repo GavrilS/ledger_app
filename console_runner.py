@@ -52,10 +52,10 @@ class Engine:
             self.finance.remove_monthly_expenditure()
         elif 'show users' in cmd:
             self.user.show_users()
-        elif 'show active user' in cmd:
+        elif 'show active_user' in cmd:
             self.user.show_active_user()
-        elif 'show user ledger' in cmd:
-            self.finance.show_user_ledger()
+        elif 'show user_ledger' in cmd:
+            self.finance.show_ledger()
         elif 'change user' in cmd:
             self.user.change_user()
 
