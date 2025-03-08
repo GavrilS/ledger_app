@@ -19,6 +19,9 @@ class FinCommands:
             
         raise Exception('No such user was found! Try again...')
 
+    def show_ledger(self):
+        self.app_data.show_user_ledger()
+
     def build_monthly_finance_report(self):
         try:
             if not self.app_data.verify_active_user_ledger():

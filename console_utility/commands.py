@@ -22,7 +22,8 @@ AVAILABLE_COMMANDS = {
     },
     'show': {
         'users': 'Show a list of existing users',
-        'active user': 'Shows the currently active user in the application'
+        'active user': 'Shows the currently active user in the application',
+        'user ledger': 'Shows the user ledger if any'
     },
     'change': {
         'user': 'Changes the active user'

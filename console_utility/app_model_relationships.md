@@ -104,5 +104,6 @@ UserCommands <-> AppData: 1 to 1 relationship
     - show yearly report
     - show users    -> Done
     - show active user
+    - show user ledger
 (f) Change commands:
     - change user -> Done

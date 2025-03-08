@@ -54,6 +54,8 @@ class Engine:
             self.user.show_users()
         elif 'show active user' in cmd:
             self.user.show_active_user()
+        elif 'show user ledger' in cmd:
+            self.finance.show_user_ledger()
         elif 'change user' in cmd:
             self.user.change_user()
 

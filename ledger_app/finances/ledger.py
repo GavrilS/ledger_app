@@ -93,3 +93,6 @@ class Ledger:
 
         for k, v in yearl_data.items():
             print(f" {k}: {v}")
+
+    def __str__(self):
+        print(f"User - {self.user}\nFinance reports - {self.finances}")

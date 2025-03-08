@@ -22,6 +22,7 @@ class AppData:
             return
         
         self.active_user = user
+        print('New active user set: ', user)
     
     def show_active_user(self):
         print(f"The current active user is: {self.active_user}")
@@ -46,6 +47,10 @@ class AppData:
                 return
         self.ledgers[user.email] = ledger
         print('New ledger added to user ', user.email)
+
+    def show_user_ledger(self):
+        self.verify_active_user()
+        print('User ledger: ', self.ledgers[self.active_user.email])
 
     def get_user_monthly_report(self, year, month):
         self.verify_active_user_ledger()
