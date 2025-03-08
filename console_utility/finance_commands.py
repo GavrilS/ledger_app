@@ -28,16 +28,9 @@ class FinCommands:
                 return False
 
             year, month = self._get_report_period()
-            income = self.add_monthly_income()
-            expenditures = self.add_monthly_expenditure()
-            
             data = mf.MonthlyReport(year=year, month=month)
-            
-            for k, v in income.items():
-                data.add_income(source=k, value=v)
-            
-            for k, v in expenditures.items():
-                data.add_expenditure(source=k, value=v)
+            self.add_monthly_income(monthly_report=data, initial_report=True)
+            self.add_monthly_expenditure(monthly_report=data, initial_report=True)
             
             self.app_data.ledgers[self.app_data.active_user].finances = data
             print('Monthly report added!')
@@ -46,44 +39,74 @@ class FinCommands:
             if retry.lower() == 'yes':
                 self.build_monthly_finance_report()
 
-    def add_monthly_income(self):
+    def add_monthly_income(self, monthly_report=None, initial_report=False):
         print('Add monthly income sources in the format "Source": "Value" on separate lines.')
         print('Example:\nJob: 1800.00\nRent: 1600.00')
         print('To finish adding income data, type: done')
-        
-        self._handle_user_input('add_income')
 
-    def remove_monthly_income(self):
+        if not initial_report:
+            year, month = self._get_report_period()
+            monthly_report = self.app_data.get_user_monthly_report(year, month) # ToDo modify the month variable to match a standard
+        
+        if not monthly_report:
+            print('No valid report was found for this operation...')
+            return False
+        
+        self._handle_user_input('add_income', monthly_report)
+
+    def remove_monthly_income(self, monthly_report=None, initial_report=False):
         print('Remove monthly income sources in the format "Source": "Value" on separate lines.')
         print('Example:\nJob: 1800.00\nRent: 1600.00')
         print('To finish removing income data, type: done')
 
-        self._handle_user_input('remove_income')
+        if not initial_report:
+            year, month = self._get_report_period()
+            monthly_report = self.app_data.get_user_monthly_report(year, month) # ToDo modify the month variable to match a standard
+        
+        if not monthly_report:
+            print('No valid report was found for this operation...')
+            return False
 
-    def add_monthly_expenditure(self):
+        self._handle_user_input('remove_income', monthly_report)
+
+    def add_monthly_expenditure(self, monthly_report=None, initial_report=False):
         print('Add monthly expenditure in the format "Source": "Value" on separate lines.')
         print('Example:\nBills: 300.00\nGroceries: 700.00')
         print('To finish adding expenditure data, type: done')
-        
-        self._handle_user_input('add_expenditure')
 
-    def remove_monthly_expenditure(self):
+        if not initial_report:
+            year, month = self._get_report_period()
+            monthly_report = self.app_data.get_user_monthly_report(year, month) # ToDo modify the month variable to match a standard
+        
+        if not monthly_report:
+            print('No valid report was found for this operation...')
+            return False
+        
+        self._handle_user_input('add_expenditure', monthly_report)
+
+    def remove_monthly_expenditure(self, monthly_report=None, initial_report=False):
         print('Remove monthly expenditure in the format "Source": "Value" on separate lines.')
         print('Example:\nBills: 300.00\nGroceries: 700.00')
         print('To finish removing expenditure data, type: done')
-        
-        self._handle_user_input('remove_expenditure')
 
-    def _handle_user_input(self, operation):
-        try:
+        if not initial_report:
             year, month = self._get_report_period()
             monthly_report = self.app_data.get_user_monthly_report(year, month) # ToDo modify the month variable to match a standard
+        
+        if not monthly_report:
+            print('No valid report was found for this operation...')
+            return False
+        
+        self._handle_user_input('remove_expenditure', monthly_report)
+
+    def _handle_user_input(self, operation, monthly_report):
+        try:
             data = {}
             flag = True
             while flag:
                 try:
                     user_input = input().split(': ')
-                    if user_input.lower() == 'done':
+                    if user_input[0].lower() in 'done/exit/quit':
                         break
                     user_input_type = user_input[0]
                     value = float(user_input[1])
