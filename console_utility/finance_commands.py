@@ -32,7 +32,8 @@ class FinCommands:
             self.add_monthly_income(monthly_report=data, initial_report=True)
             self.add_monthly_expenditure(monthly_report=data, initial_report=True)
             print('Monthly Report: ', data)
-            self.app_data.ledgers[self.app_data.active_user].finances.append(data)
+            print('Ledger: ', self.app_data.ledgers[self.app_data.active_user.email])
+            self.app_data.ledgers[self.app_data.active_user.email].finances.append(data)
             print('Monthly report added!')
         except Exception as e:
             retry = input(f"There was an issue building the monthly finance report: {e} \nDo you want to try again?[Yes/no]: ")
@@ -109,7 +110,7 @@ class FinCommands:
                     if user_input[0].lower() in 'done/exit/quit':
                         break
                     user_input_type = user_input[0]
-                    value = float(user_input[1])
+                    value = float(user_input[1].strip())
                     if operation == 'add_income':
                         monthly_report.add_income(source=user_input_type, value=value)
                     elif operation == 'remove_income':

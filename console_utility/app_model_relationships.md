@@ -90,7 +90,7 @@ UserCommands <-> AppData: 1 to 1 relationship
 (a) Create commands:
     - create user -> Done
     - create ledger -> Done(might have to update it to list active user or only work if active user is set)
-    - create report
+    - create report -> Done
 (b) Delete commands:
     - delete user
 (c) Add commands:
