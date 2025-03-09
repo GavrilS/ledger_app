@@ -54,6 +54,15 @@ class MonthlyReport:
             print(f" {k}: {v}")
 
     @property
+    def total_income(self):
+        total_income = 0
+        for k, v in self.income.items():
+            total_income += v
+        
+        # print(f"Total income for {self.month} {self.year} is {total_income}")
+        return total_income
+
+    @property
     def expenditures(self):
         return self._expenditures
 
@@ -73,3 +82,29 @@ class MonthlyReport:
         print(f"Expenditures for {self.month} {self.year}")
         for k, v in self.expenditures.items():
             print(f" {k}: {v}")
+
+    @property
+    def total_expenses(self):
+        total_expenses = 0
+        for k, v in self.expenditures.items():
+            total_expenses += v
+        
+        # print(f"Total expenses for {self.month} {self.year} is {total_expenses}")
+        return total_expenses
+
+    def monthly_balance(self):
+        monthly_balance = self.total_income - self.total_expenses
+
+        # print(f"Monthly balance for {self.month} {self.year} is {monthly_balance}")
+        return monthly_balance
+
+    def __str__(self):
+        year = f"\n Year - {self.year}"
+        month = f"\n Month - {self.month}"
+        income = f"\n Income - {self.income}"
+        expenses = f"\n Expenses - {self.expenditures}"
+        total_income = f"\n Total income - {self.total_income}"
+        total_expenses = f"\n Total expenses - {self.total_expenses}"
+        monthly_balance = f"\n Monthly balance - {self.monthly_balance}"
+
+        return f"Monthly Report: {year}{month}{income}{expenses}{total_income}{total_expenses}{monthly_balance}"
