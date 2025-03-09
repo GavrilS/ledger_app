@@ -56,6 +56,10 @@ class Engine:
             self.user.show_active_user()
         elif 'show user_ledger' in cmd:
             self.finance.show_ledger()
+        elif 'show monthly_report':
+            self.finances.show_monthly_report()
+        elif 'show yearly_report':
+            self.finances.show_yearly_report()
         elif 'change user' in cmd:
             self.user.change_user()
 
