@@ -32,7 +32,7 @@ class FinCommands:
             self.add_monthly_income(monthly_report=data, initial_report=True)
             self.add_monthly_expenditure(monthly_report=data, initial_report=True)
             print('Monthly Report: ', data)
-            self.app_data.ledgers[self.app_data.active_user].finances = data
+            self.app_data.ledgers[self.app_data.active_user].finances.append(data)
             print('Monthly report added!')
         except Exception as e:
             retry = input(f"There was an issue building the monthly finance report: {e} \nDo you want to try again?[Yes/no]: ")
