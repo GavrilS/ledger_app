@@ -100,6 +100,13 @@ class FinCommands:
         
         self._handle_user_input('remove_expenditure', monthly_report)
 
+    def show_monthly_report(self):
+        print('To view a monthly report for a user add the year and month')
+        year = input('Year: ')
+        month = input('Month: ')
+        monthly_report = self.app_data.get_user_monthly_report(year, month)
+        print(monthly_report)
+
     def _handle_user_input(self, operation, monthly_report):
         try:
             data = {}
