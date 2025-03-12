@@ -100,7 +100,7 @@ UserCommands <-> AppData: 1 to 1 relationship
     - remove income
     - remove expenses
 (e) Show commands:
-    - show monthly_report
+    - show monthly_report -> Done
     - show yearly_report
     - show users    -> Done
     - show active_user -> Done

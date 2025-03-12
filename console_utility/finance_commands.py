@@ -102,7 +102,7 @@ class FinCommands:
 
     def show_monthly_report(self):
         print('To view a monthly report for a user add the year and month')
-        year = input('Year: ')
+        year = int(input('Year: '))
         month = input('Month: ')
         monthly_report = self.app_data.get_user_monthly_report(year, month)
         print(monthly_report)

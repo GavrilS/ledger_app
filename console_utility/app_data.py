@@ -54,10 +54,11 @@ class AppData:
 
     def get_user_monthly_report(self, year, month):
         self.verify_active_user_ledger()
-        ledger = self.ledgers[self.active_user]
+        ledger = self.ledgers[self.active_user.email]
         for report in ledger.finances:
             if report.year == year and report.month == month:
                 return report
+        return None
 
     def get_user_by_mail(self, user_mail):
         for user in self.users:
