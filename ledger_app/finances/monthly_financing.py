@@ -105,6 +105,6 @@ class MonthlyReport:
         expenses = f"\n Expenses - {self.expenditures}"
         total_income = f"\n Total income - {self.total_income}"
         total_expenses = f"\n Total expenses - {self.total_expenses}"
-        monthly_balance = f"\n Monthly balance - {self.monthly_balance}"
+        monthly_balance = f"\n Monthly balance - {self.monthly_balance()}"
 
         return f"Monthly Report: {year}{month}{income}{expenses}{total_income}{total_expenses}{monthly_balance}"
