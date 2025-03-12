@@ -2,6 +2,7 @@ from flask import (
     Flask, render_template, url_for, request
 )
 from flask_sqlalchemy import SQLAlchemy
+import uuid
 
 # init the db to use it later in the models
 db = SQLAlchemy()
@@ -9,7 +10,7 @@ db = SQLAlchemy()
 def create_app():
     app = Flask(__name__)
 
-    app.config['SECRET_KEY'] = 'secret_key_goes_here'
+    app.config['SECRET_KEY'] = uuid.uuid4().hex
     app.config['SQLALCHEMY_DATABASE_URL'] = "sqlite:///db.sqlite"
 
     db.init_app(app)
