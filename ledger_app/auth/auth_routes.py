@@ -1,5 +1,5 @@
 from flask import Blueprint
-from ledger_app import db
+# from ledger_app import db
 
 auth = Blueprint('auth', __name__)
 
