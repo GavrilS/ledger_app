@@ -19,4 +19,7 @@ def create_app():
     from .auth.auth_routes import auth as auth_blueprint
     app.register_blueprint(auth_blueprint)
 
+    from .finances.fin_routes import fin as fin_blueprint
+    app.register_blueprint(fin_blueprint)
+
     return app
