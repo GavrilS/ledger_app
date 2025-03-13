@@ -91,7 +91,7 @@ class Ledger:
         print(ANALYSIS_TYPE_MESSAGE.get(
             analysis_type, 'yearly_income').replace('$year_value', str(year)))
 
-        for k, v in yearl_data.items():
+        for k, v in yearly_data.items():
             print(f" {k}: {v}")
 
     def __str__(self):
