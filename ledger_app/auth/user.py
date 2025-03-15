@@ -4,10 +4,15 @@ A class to create/delete new Users.
 
 class User:
 
-    def __init__(self, name, password, email):
+    def __init__(self, id=None, name=None, password=None, email=None):
+        self._id = id
         self.name = name
         self.password = password
         self.email = email
+
+    @property
+    def id(self):
+        return self._id
 
     @property
     def name(self):
